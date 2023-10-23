@@ -1,21 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="style.css" />
     <title>Paris, d'est en ouest</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
-    <div id ="container">
-        <nav id="topnav">
-            </nav>
-            <section id="content">
-                <h1>Paris, d'est en ouest</h1>
-                <h2>Quel est ton bord ? </h2>
-                <a href ="index2.html"><img src = "images/noun-compass-1335448.svg" width="300" alt="boussole">
-                    <h3>Commencer le quizz !</h3>
-            </section>
+    <section class="Paris" id="start-screen">
+      <header>
+        <h1>Paris, d'est en ouest...</h1>
+      </header>
 
+      <div class="container">
+        <h2>Quel est ton bord ?</h2>
+        <div>
+          <button id="start-game">
+            <img src="images/symbol-39496.svg" width="200px" />
+          </button>
+        </div>
+        <img
+          src="images/arrow-circle-up-svgrepo-com.svg"
+          width="100px;"
+          alt="start"
+        />
+        <h3>START</h3>
+      </div>
+    </section>
+    <section class="Paris" id="game-screen">
+      <div class="topContainer">
+        <div id="leftDiv">0/12</div>
+        <div class="titleContainer">
+          <h1>Paris, d'est en ouest</h1>
+        </div>
+        <div id="scoreDiv">SCORE: 0</div>
+        <ul>
+          <li>Nord</li>
+          <li>Sud</li>
+          <li>Est</li>
+          <li>Ouest</li>
+        </ul>
+      </div>
+    </section>
+
+    <div id="question1">
+      <div class="second-container">
+        <p class="quizz">
+          "Le Musée-Placard présente la plus grande collection de placards au
+          monde "
+        </p>
+      </div>
+      <div class="third-container">
+        <div class="answer">
+          <button class="true" class="btn true">VRAI</button>
+          <button class="false" class="btn false" onclick="AddScore()">
+            FAUX
+          </button>
+          <button class="subjective" class="btn subjective">
+            C'est subjectif...
+          </button>
+          <!--<button class="next">
+            <img
+              src="images/arrow-right-circle-svgrepo-com.svg"
+              width="100px"
+              alt="next"
+              id="next"
+            />
+          </button>-->
+        </div>
+      </div>
+    </div>
+
+    <div id="question2">
+      <div class="second-container">
+        <p class="quizz">
+          "Le meilleur restaurant basque de tout Paris se trouve à la Butte aux
+          Cailles"
+        </p>
+      </div>
+      <div class="third-container">
+        <div class="answer">
+          <button class="true" class="btn true">VRAI</button>
+          <button class="false" class="btn false">FAUX</button>
+          <button
+            class="subjective"
+            class="btn subjective"
+            onclick="AddScore()"
+          >
+            C'est subjectif...
+          </button>
+          <!--<button class="next">
+            <img
+              src="images/arrow-right-circle-svgrepo-com.svg"
+              width="100px"
+              alt="next"
+              id="next"
+            />
+          </button>-->
+        </div>
+      </div>
+    </div>
+
+    <div id="question3">
+      <div class="second-container">
+        <p class="quizz">
+          "Le quartier de Charonne doit son nom à la présence de nombreux
+          restaurants de viande."
+        </p>
+      </div>
+      <div class="third-container">
+        <div class="answer">
+          <button class="true" class="btn true">VRAI</button>
+          <button class="false" class="btn false" onclick="AddScore()">
+            FAUX
+          </button>
+          <button class="subjective" class="btn subjective">
+            C'est subjectif...
+          </button>
+          <!--<button class="next">
+            <img
+              src="images/arrow-right-circle-svgrepo-com.svg"
+              width="100px"
+              alt="next"
+              id="next"
+            />
+          </button>-->
+        </div>
+      </div>
+    </div>
+
+    <div id="question4">
+      <div class="second-container">
+        <p class="quizz">
+          "Le quartier de la Muette dans le 16e, doit son nom à une célèbre
+          écrivaine du 19e surnomée « la Muette ». "
+        </p>
+      </div>
+      <div class="third-container">
+        <div class="answer">
+          <button class="true" class="btn true">VRAI</button>
+          <button class="false" class="btn false" onclick="AddScore()">
+            FAUX
+          </button>
+          <button class="subjective" class="btn subjective">
+            C'est subjectif...
+          </button>
+          <!--<button class="next">
+            <img
+              src="images/arrow-right-circle-svgrepo-com.svg"
+              width="100px"
+              alt="next"
+              id="next"
+            />
+          </button>-->
+        </div>
+      </div>
+    </div>
+
+    <div id="question5">
+      <div class="second-container">
+        <p class="quizz">
+          "Le Musée du Quai Branly abrite les collections du physicien Edouard
+          Branly "
+        </p>
+      </div>
+      <div class="third-container">
+        <div class="answer">
+          <button class="true" class="btn true">VRAI</button>
+          <button class="false" class="btn false" onclick="AddScore()">
+            FAUX
+          </button>
+          <button class="subjective" class="btn subjective">
+            C'est subjectif...
+          </button>
+          <!--<button class="next">
+            <img
+              src="images/arrow-right-circle-svgrepo-com.svg"
+              width="100px"
+              alt="next"
+              id="next"
+            />
+          </button>-->
+        </div>
+      </div>
+    </div>
+    <script src="data-nord.js"></script>
   </body>
 </html>

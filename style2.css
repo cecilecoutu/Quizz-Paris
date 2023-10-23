@@ -1,6 +1,9 @@
 html {
   box-sizing: border-box;
   font-size: 16px;
+  background-image: url("images/subway-7381618_1280.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 *,
@@ -10,7 +13,7 @@ html {
 }
 
 h1 {
-  font-size: 10rem;
+  font-size: 25rem;
   font-weight: bold;
   color: white;
   margin: 0 auto;
@@ -48,20 +51,22 @@ body {
   justify-content: center;
   align-content: space-around;
   width: 100%;
-  margin-left: 80px;
+  margin-left: 10px;
 }
 
 #leftDiv {
   height: 110px;
   width: 110px;
   padding-top: 5px;
-  text-align: left;
-
+  text-align: center;
+  align-self: center;
   margin: 70px 30px 30px 10px;
   border-radius: 100%;
-  font-size: 50px;
+  font-size: 30px;
+  font-family: system-ui;
   font-weight: 500;
   color: white;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .titleContainer {
@@ -78,16 +83,6 @@ body {
   padding: 5px;
   font-size: 30px;
   font-weight: 500;
-}
-
-.container {
-  box-sizing: border-box;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-right: 80px;
-  padding-top: 70px;
 }
 
 .second-container {
@@ -165,7 +160,7 @@ body {
   color: white;
 }
 
-button {
+.btn {
   font-size: 18px;
   text-align: center;
 }

@@ -1,31 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="style2.css" />
     <title>Paris, d'est en ouest</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
-    <div id ="container">
-        <nav id="topnav">
-            </nav>
-            <section id="content">
-                <h1>Paris, d'est en ouest</h1>
-                <div><p>Ici est la question...</p></div>
-                <button>Vrai</button>
-                <button>Faux</button>
-                <button>C'est subjectif...</button>   
-                <div>
-                    <p>SCORE</p>
-                    <ul>
-                        <li>Nord</li>
-                        <li>Sud</li>
-                        <li>Est</li>
-                        <li>Ouest</li>
-                    </ul>
-                </div>     
-            </section>
+    <section class="Paris">
+        <div class="topContainer">
+            <div id="leftDiv">0/20</div>
+      
+        <div class="titleContainer">
+            <a href="index.html">
+        <h1>Paris, d'est en ouest</h1>
+        </a>
+      </div>
+      <div id="scoreDiv">SCORE: 0</div>        
+        <ul>
+          <li>Nord</li>
+          <li>Sud</li>
+          <li>Est</li>
+          <li>Ouest</li>
+        </ul>
+      </div>
+    </div>
 
+      <div class="second-container">
+        <p id="quizz">
+            "Le Musée-Placard présente la plus grande collection de placards au monde "
+        </p></div>
+        <div class="third-container">
+            <div class="answer">
+        <button id="true" class="btn true">VRAI</button>
+        <button id="false" class="btn false">FAUX</button>
+        <button id="subjective" class="btn subjective">C'est subjectif...</button>
+        <button id ="next"><img src="images/arrow-right-circle-svgrepo-com.svg" width="100px" alt="next" id="next"></button>  
+      </div>
+    </section>
+    <script src ="data-nord.js"></script>
   </body>
 </html>
