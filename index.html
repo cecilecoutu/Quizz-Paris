@@ -10,38 +10,27 @@
   <body>
     <section class="Paris" id="start-screen">
       <header>
-        <h1>Paris, d'est en ouest...</h1>
+        <h1>Quizz : Paris, d'est en ouest...</h1>
       </header>
 
-      <div class="container">
-        <h2>Quel est ton bord ?</h2>
+      <div class="container"><img src="images/arrow-circle-down-svgrepo-com.svg" width="100px" alt="start"/>
+      <h3>START</h3>
+    </div>
         <div>
           <button id="start-game">
             <img src="images/symbol-39496.svg" width="200px" />
           </button>
-        </div>
-        <img
-          src="images/arrow-circle-up-svgrepo-com.svg"
-          width="100px;"
-          alt="start"
-        />
-        <h3>START</h3>
-      </div>
-    </section>
+          </div>
+          </section>
     <section class="Paris" id="game-screen">
       <div class="topContainer">
-        <div id="leftDiv">0/12</div>
+        <div class="questions">Question:</div>
+        <div id="leftDiv">0</div>
         <div class="titleContainer">
-          <h1>Paris, d'est en ouest</h1>
+          <h1>Quizz : Paris, d'est en ouest</h1>
         </div>
-        <div id="scoreDiv">SCORE: 0</div>
-        <ul>
-          <li>Nord</li>
-          <li>Sud</li>
-          <li>Est</li>
-          <li>Ouest</li>
-        </ul>
-      </div>
+        <div class="score">SCORE:</div>
+        <div id="scoreDiv">0</div>
     </section>
 
     <div id="question1">
@@ -54,9 +43,7 @@
       <div class="third-container">
         <div class="answer">
           <button class="true" class="btn true">VRAI</button>
-          <button class="false" class="btn false" onclick="AddScore()">
-            FAUX
-          </button>
+          <button class="false" class="btn false">FAUX</button>
           <button class="subjective" class="btn subjective">
             C'est subjectif...
           </button>
@@ -83,11 +70,7 @@
         <div class="answer">
           <button class="true" class="btn true">VRAI</button>
           <button class="false" class="btn false">FAUX</button>
-          <button
-            class="subjective"
-            class="btn subjective"
-            onclick="AddScore()"
-          >
+          <button class="subjective" class="btn subjective">
             C'est subjectif...
           </button>
           <!--<button class="next">
@@ -112,9 +95,7 @@
       <div class="third-container">
         <div class="answer">
           <button class="true" class="btn true">VRAI</button>
-          <button class="false" class="btn false" onclick="AddScore()">
-            FAUX
-          </button>
+          <button class="false" class="btn false">FAUX</button>
           <button class="subjective" class="btn subjective">
             C'est subjectif...
           </button>
@@ -140,9 +121,7 @@
       <div class="third-container">
         <div class="answer">
           <button class="true" class="btn true">VRAI</button>
-          <button class="false" class="btn false" onclick="AddScore()">
-            FAUX
-          </button>
+          <button class="false" class="btn false">FAUX</button>
           <button class="subjective" class="btn subjective">
             C'est subjectif...
           </button>
@@ -168,9 +147,7 @@
       <div class="third-container">
         <div class="answer">
           <button class="true" class="btn true">VRAI</button>
-          <button class="false" class="btn false" onclick="AddScore()">
-            FAUX
-          </button>
+          <button class="false" class="btn false">FAUX</button>
           <button class="subjective" class="btn subjective">
             C'est subjectif...
           </button>
@@ -182,9 +159,20 @@
               id="next"
             />
           </button>-->
+       
+          </div>
         </div>
       </div>
     </div>
+
+    <div id="end-game">
+      <div class="end-box"><p>Votre score est de: 
+        <span id="score-final">0</span></p></div>
+        <div class ="gif">
+          <img src="images/giphy.gif">
+        </div>  
+    </div>
+
     <script src="data-nord.js"></script>
   </body>
 </html>
