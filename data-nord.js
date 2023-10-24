@@ -61,12 +61,6 @@ const questions = [
   {
     location: "south",
     question:
-      "Le meilleur restaurant basque de tout Paris se trouve à la Butte aux Cailles",
-  },
-
-  {
-    location: "south",
-    question:
       "Le quartier de Croulebarbe doit son nom au fait que jusqu’au 19e siècle, le quartier croulait sous le nombre de barbiers. ",
     reponse: false,
   },
@@ -216,6 +210,8 @@ const questions = [
   },
 ];
 
+//Test
+
 // A faire : Filtrer les questions par localisation
 // 1°) map through the array of questions and get all the locations into one array as a final result
 
@@ -269,7 +265,9 @@ const NumberofQuestions = document.getElementById("leftDiv");
 const QuizzScore = document.getElementById("scoreDiv");
 const Quizzcontainer = document.getElementById("quizz");
 const Quizzresults = document.getElementsByClassName("answer");
+
 const TrueAnswer1 = document.querySelector("#question1 .true");
+
 const FalseAnswer1 = document.querySelector("#question1 .false");
 const SubjectiveAnswer1 = document.querySelector("#question1 .subjective");
 const TrueAnswer2 = document.querySelector("#question2 .true");
@@ -292,6 +290,8 @@ const ShowQuestion2 = document.getElementById("question2");
 const ShowQuestion3 = document.getElementById("question3");
 const ShowQuestion4 = document.getElementById("question4");
 const ShowQuestion5 = document.getElementById("question5");
+const ShowEndGame = document.getElementById("end-game");
+
 let score = 0;
 let count = 0;
 
@@ -309,8 +309,8 @@ function CountQuestion() {
   document.getElementById("leftDiv").innerHTML = count;
 }
 
-function SumGoodAnswers() {
-  sum(score);
+function ShowResults() {
+  document.getElementById("score-final").innerHTML = score;
 }
 
 function showblock() {
@@ -333,96 +333,143 @@ TrueAnswer1.addEventListener("click", (event) => {
   console.log(event);
   ShowQuestion1.style.display = "none";
   ShowQuestion2.style.display = "block";
+  CountQuestion();
 });
 
 FalseAnswer1.addEventListener("click", (event) => {
   console.log(event);
   ShowQuestion1.style.display = "none";
   ShowQuestion2.style.display = "block";
-  score += 1;
+  AddScore();
+  CountQuestion();
 });
 
 SubjectiveAnswer1.addEventListener("click", (event) => {
   console.log(event);
   ShowQuestion1.style.display = "none";
   ShowQuestion2.style.display = "block";
+  CountQuestion();
 });
 
 TrueAnswer2.addEventListener("click", (event) => {
   console.log(event);
   ShowQuestion2.style.display = "none";
   ShowQuestion3.style.display = "block";
+  CountQuestion();
 });
 
 FalseAnswer2.addEventListener("click", (event) => {
   console.log(event);
   ShowQuestion2.style.display = "none";
   ShowQuestion3.style.display = "block";
+  CountQuestion();
 });
 
 SubjectiveAnswer2.addEventListener("click", (event) => {
   console.log(event);
   ShowQuestion2.style.display = "none";
   ShowQuestion3.style.display = "block";
-  score += 1;
+  AddScore();
+  CountQuestion();
 });
 
 TrueAnswer3.addEventListener("click", (event) => {
   console.log(event);
-  ShowQuestion2.style.display = "none";
-  ShowQuestion3.style.display = "block";
+  ShowQuestion3.style.display = "none";
+  ShowQuestion4.style.display = "block";
+  CountQuestion();
 });
 
 FalseAnswer3.addEventListener("click", (event) => {
   console.log(event);
   ShowQuestion3.style.display = "none";
   ShowQuestion4.style.display = "block";
-  score += 1;
+  AddScore();
+  CountQuestion();
 });
 
 SubjectiveAnswer3.addEventListener("click", (event) => {
   console.log(event);
   ShowQuestion3.style.display = "none";
   ShowQuestion4.style.display = "block";
+  CountQuestion();
 });
 
 TrueAnswer4.addEventListener("click", (event) => {
   console.log(event);
   ShowQuestion4.style.display = "none";
   ShowQuestion5.style.display = "block";
+  CountQuestion();
 });
 
 FalseAnswer4.addEventListener("click", (event) => {
   console.log(event);
   ShowQuestion4.style.display = "none";
   ShowQuestion5.style.display = "block";
-  score += 1;
+  AddScore();
+  CountQuestion();
 });
 
 SubjectiveAnswer4.addEventListener("click", (event) => {
   console.log(event);
   ShowQuestion4.style.display = "none";
   ShowQuestion5.style.display = "block";
+  CountQuestion();
 });
 
 TrueAnswer5.addEventListener("click", (event) => {
   console.log(event);
   ShowQuestion5.style.display = "none";
-  ShowQuestion6.style.display = "block";
+  ShowEndGame.style.display = "block";
+  CountQuestion();
+  ShowResults();
 });
 
 FalseAnswer5.addEventListener("click", (event) => {
   console.log(event);
   ShowQuestion5.style.display = "none";
-  ShowQuestion6.style.display = "block";
-  score += 1;
+  ShowEndGame.style.display = "block";
+  AddScore();
+  CountQuestion();
+  ShowResults();
 });
 
 SubjectiveAnswer5.addEventListener("click", (event) => {
   console.log(event);
   ShowQuestion5.style.display = "none";
-  ShowQuestion6.style.display = "block";
+  ShowEndGame.style.display = "block";
+  CountQuestion();
+  ShowResults();
 });
+
+let QuestionNumber = 1;
+let AnswerNumber = 1;
+for (
+  let index = Math.floor(Math.random(questions.length));
+  index < 5;
+  index++
+) {
+  const element = questions[index];
+  console.log(element);
+  console.log(document.querySelector(`#question${QuestionNumber} .quizz`));
+
+  const Question = document.querySelector(`#question${QuestionNumber} .quizz`); // récupérer la question pour les boutons, faire idem, et incrémenter d'un point.
+  Question.innerHTML = element.question;
+  // innerHTML : possibilité d'ajouter des blocs dans le Javascript
+
+  if (element.reponse === true) {
+    AddScore();
+  } else QuestionNumber++;
+}
+
+// Récupérer la question pour les boutons :
+{
+  const element = reponse[index];
+  console.log(element);
+  console.log(document.querySelector(`#reponse${AnswerNumber} .answer`));
+  const Answer = document.querySelector(`#reponse${AnswerNumber} .answer`);
+  Answer.innerHTMl = element.reponse;
+}
 
 //const restartButton = document.getElementById("restart-game"); // créer le bouton Restart CSS endgame
 //let game;
@@ -443,12 +490,12 @@ SubjectiveAnswer5.addEventListener("click", (event) => {
 // itération 3 : compte + 1 au décompte de questions
 
 // itération 4 : si la réponse est correcte
-if (userAnswer === currentQuestion.correctAnswer) {
-  // ajouter + 1 au score
-  scoreDiv++;
-} else {
-  void 0;
-}
+//if (userAnswer === currentQuestion.correctAnswer) {
+// ajouter + 1 au score
+//scoreDiv++;
+//} else {
+void 0;
+//}
 // itération 5 : ajoute le score dans la section correspondante
 
 // itération 6 : affiche la question suivante en cliquant sur Next
@@ -462,4 +509,4 @@ function showResults() {
   // retourne une phrase en fonction du nombre de réponses :
 }
 
-//submitButton.addEventListener(cliquez, showResults);
+//submitButton.addEventListener(cliquez, showResults)
