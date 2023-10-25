@@ -10,8 +10,14 @@
   <body>
     <section class="Paris" id="start-screen">
       <header>
+        <div class="top-box">
         <h1>Quizz : Paris, d'est en ouest...</h1>
-      </header>
+      </header></div>
+      <div class="rules">
+      <p>Connais-tu bien la capitale?
+        Teste tes connaissances et découvre des anectodes!</p>
+
+      </div>
 
       <div class="container"><img src="images/arrow-circle-down-svgrepo-com.svg" width="100px" alt="start"/>
       <h3>START</h3>
@@ -24,7 +30,7 @@
           </section>
     <section class="Paris" id="game-screen">
       <div class="topContainer">
-        <div class="questions">Question:</div>
+        <div class="questions">QUESTION:</div>
         <div id="leftDiv">0</div>
         <div class="titleContainer">
           <h1>Quizz : Paris, d'est en ouest</h1>
@@ -44,8 +50,6 @@
         <div class="answer">
           <button class="true" class="btn true">VRAI</button>
           <button class="false" class="btn false">FAUX</button>
-          <button class="subjective" class="btn subjective">
-            C'est subjectif...
           </button>
           <!--<button class="next">
             <img
@@ -62,17 +66,13 @@
     <div id="question2">
       <div class="second-container">
         <p class="quizz">
-          "Le meilleur restaurant basque de tout Paris se trouve à la Butte aux
-          Cailles"
+          "Le parc des Buttes-Chaumont est le plus grand parc parisien intra-muros"
         </p>
       </div>
       <div class="third-container">
         <div class="answer">
-          <button class="true" class="btn true">VRAI</button>
-          <button class="false" class="btn false">FAUX</button>
-          <button class="subjective" class="btn subjective">
-            C'est subjectif...
-          </button>
+          <button class="true" class="btn-true">VRAI</button>
+          <button class="false" class="btn-false">FAUX</button>
           <!--<button class="next">
             <img
               src="images/arrow-right-circle-svgrepo-com.svg"
@@ -96,9 +96,6 @@
         <div class="answer">
           <button class="true" class="btn true">VRAI</button>
           <button class="false" class="btn false">FAUX</button>
-          <button class="subjective" class="btn subjective">
-            C'est subjectif...
-          </button>
           <!--<button class="next">
             <img
               src="images/arrow-right-circle-svgrepo-com.svg"
@@ -122,9 +119,6 @@
         <div class="answer">
           <button class="true" class="btn true">VRAI</button>
           <button class="false" class="btn false">FAUX</button>
-          <button class="subjective" class="btn subjective">
-            C'est subjectif...
-          </button>
           <!--<button class="next">
             <img
               src="images/arrow-right-circle-svgrepo-com.svg"
@@ -148,29 +142,94 @@
         <div class="answer">
           <button class="true" class="btn true">VRAI</button>
           <button class="false" class="btn false">FAUX</button>
-          <button class="subjective" class="btn subjective">
-            C'est subjectif...
-          </button>
-          <!--<button class="next">
-            <img
-              src="images/arrow-right-circle-svgrepo-com.svg"
-              width="100px"
-              alt="next"
-              id="next"
-            />
-          </button>-->
        
           </div>
         </div>
       </div>
     </div>
 
+  <!--<div id="question6">
+      <div class="second-container">
+        <p class="quizz">
+          "Le quartier de la Muette dans le 16e, doit son nom à une célèbre
+          écrivaine du 19e surnomée « la Muette ». "
+        </p>
+      </div>
+      <div class="third-container">
+        <div class="answer">
+          <button class="true" class="btn true">VRAI</button>
+          <button class="false" class="btn false">FAUX</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="question7">
+      <div class="second-container">
+        <p class="quizz">
+          "Le Musée Zadkine se trouve près du jardin du Luxembourg"
+        </p>
+      </div>
+      <div class="third-container">
+        <div class="answer">
+          <button class="true" class="btn true">VRAI</button>
+          <button class="false" class="btn false">FAUX</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="question8">
+      <div class="second-container">
+        <p class="quizz">
+          "La hauteur de la Tour Montparnasse est de 800m. "
+        </p>
+      </div>
+      <div class="third-container">
+        <div class="answer">
+          <button class="true" class="btn true">VRAI</button>
+          <button class="false" class="btn false">FAUX</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="question9">
+      <div class="second-container">
+        <p class="quizz">
+          "Le cimetière du Père Lachaise abrite la tombe d’Oscar Wilde "
+        </p>
+      </div>
+      <div class="third-container">
+        <div class="answer">
+          <button class="true" class="btn true">VRAI</button>
+          <button class="false" class="btn false">FAUX</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="question10">
+      <div class="second-container">
+        <p class="quizz">
+          "La gare de Lyon a été construite pour l’Exposition universelle de 1900. "
+        </p>
+      </div>
+      <div class="third-container">
+        <div class="answer">
+          <button class="true" class="btn true">VRAI</button>
+          <button class="false" class="btn false">FAUX</button>
+        </div>
+      </div>
+    </div>-->
+  
+
     <div id="end-game">
-      <div class="end-box"><p>Votre score est de: 
-        <span id="score-final">0</span></p></div>
+      <div class="end-box">Votre score est de: 
+        <span id="score-final">0</span></div>
         <div class ="gif">
           <img src="images/giphy.gif">
-        </div>  
+        </div> 
+    
+    <div id="start-again">
+      <button class="btn" class="start-again">START AGAIN</button>
+    </div>
     </div>
 
     <script src="data-nord.js"></script>
