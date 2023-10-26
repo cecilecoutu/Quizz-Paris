@@ -4,6 +4,8 @@ const questions = [
     question:
       "Le Musée-Placard présente la plus grande collection de placards au monde",
     reponse: false,
+    solution:
+      "Le Musée-Placard était le plus petit musée du monde ! Il a fermé en 2008",
   },
 
   {
@@ -28,7 +30,7 @@ const questions = [
 
   {
     location: "nord",
-    question: "Le Musée Nissim de Camondo donne sur le parc ",
+    question: "Le Musée Nissim de Camondo donne sur le parc Monceau",
     reponse: true,
   },
 
@@ -209,6 +211,7 @@ const questions = [
     reponse: true,
   },
 ];
+console.log(questions);
 
 //Test
 
@@ -259,254 +262,320 @@ function filterNorthLocations(questionsArray) {
 /******Début de jeu******/
 
 // Sélection des éléments HTML et stockage dans des variables
+window.onload = function () {
+  const StartGame = document.getElementById("start-game");
+  const ReStartQuizz = document.getElementById("start-again");
 
-const StartGame = document.getElementById("start-game");
-const NumberofQuestions = document.getElementById("leftDiv");
-const QuizzScore = document.getElementById("scoreDiv");
-const Quizzcontainer = document.getElementById("quizz");
-const Quizzresults = document.getElementsByClassName("answer");
+  const NumberofQuestions = document.getElementById("leftDiv");
+  const QuizzScore = document.getElementById("scoreDiv");
+  const Quizzcontainer = document.getElementById("quizz");
+  const Quizzresults = document.getElementsByClassName("answer");
 
-const TrueAnswer1 = document.querySelector("#question1 .true");
+  const TrueAnswer1 = document.querySelector("#question1 .true");
 
-const FalseAnswer1 = document.querySelector("#question1 .false");
-const SubjectiveAnswer1 = document.querySelector("#question1 .subjective");
-const TrueAnswer2 = document.querySelector("#question2 .true");
-const FalseAnswer2 = document.querySelector("#question2 .false");
-const SubjectiveAnswer2 = document.querySelector("#question2 .subjective");
-const TrueAnswer3 = document.querySelector("#question3 .true");
-const FalseAnswer3 = document.querySelector("#question3 .false");
-const SubjectiveAnswer3 = document.querySelector("#question3 .subjective");
-const TrueAnswer4 = document.querySelector("#question4 .true");
-const FalseAnswer4 = document.querySelector("#question4 .false");
-const SubjectiveAnswer4 = document.querySelector("#question4 .subjective");
-const TrueAnswer5 = document.querySelector("#question5 .true");
-const FalseAnswer5 = document.querySelector("#question5 .false");
-const SubjectiveAnswer5 = document.querySelector("#question5 .subjective");
+  const FalseAnswer1 = document.querySelector("#question1 .false");
+  const RepFalseAnswer1 = document.querySelector("#question1 .solution");
 
-const StartScreen = document.getElementById("start-screen");
-const GameScreen = document.getElementById("game-screen");
-const ShowQuestion1 = document.getElementById("question1");
-const ShowQuestion2 = document.getElementById("question2");
-const ShowQuestion3 = document.getElementById("question3");
-const ShowQuestion4 = document.getElementById("question4");
-const ShowQuestion5 = document.getElementById("question5");
-const ShowEndGame = document.getElementById("end-game");
+  const TrueAnswer2 = document.querySelector("#question2 .true");
+  const FalseAnswer2 = document.querySelector("#question2 .false");
 
-let score = 0;
-let count = 0;
+  const TrueAnswer3 = document.querySelector("#question3 .true");
+  const FalseAnswer3 = document.querySelector("#question3 .false");
 
-// Ajout des events sur les boutons
+  const TrueAnswer4 = document.querySelector("#question4 .true");
+  const FalseAnswer4 = document.querySelector("#question4 .false");
 
-// Fonction SCORE
+  const TrueAnswer5 = document.querySelector("#question5 .true");
+  const FalseAnswer5 = document.querySelector("#question5 .false");
 
-function AddScore() {
-  score += 1;
-  document.getElementById("scoreDiv").innerHTML = score;
+  const StartScreen = document.getElementById("start-screen");
+  const GameScreen = document.getElementById("game-screen");
+  const ShowQuestion1 = document.getElementById("question1");
+  const ShowQuestion2 = document.getElementById("question2");
+  const ShowQuestion3 = document.getElementById("question3");
+  const ShowQuestion4 = document.getElementById("question4");
+  const ShowQuestion5 = document.getElementById("question5");
+  const ShowEndGame = document.getElementById("end-game");
+
+  let score = 0;
+  let count = 0;
+  let currentQuestionIndex = 0;
+
+  /*TEST
+
+  displayQuestion();
 }
 
-function CountQuestion() {
-  count++;
-  document.getElementById("leftDiv").innerHTML = count;
+// Fonction pour afficher la question actuelle (exemples)
+function displayQuestion() {
+  const questionElement = document.getElementById("question");
+  const reponseElement = document.getElementById("reponse");
+
+  if (currentQuestionIndex < questions.length) {
+    questionElement.textContent = questions[currentQuestionIndex].question;
+    reponseElement.innerHTML = "";
+
+    questions[currentQuestionIndex].reponse.forEach((reponse) => {
+      const answerButton = document.createElement("button");
+      answerButton.textContent = reponse;
+      answerButton.addEventListener("click", () => checkAnswer(reponse));
+      answersElement.appendChild(answerButton);
+    });
+  } else {
+    // Le quiz est terminé, affichez le score final ou un message de fin.
+    questionElement.textContent = "Quiz terminé ! Score final : " + score;
+    answersElement.innerHTML = "";
+  }
 }
 
-function ShowResults() {
-  document.getElementById("score-final").innerHTML = score;
+// Fonction pour vérifier la réponse et mettre à jour le score
+function checkAnswer(selectedAnswer) {
+  const correctAnswer = questions[currentQuestionIndex].correctAnswer;
+  if (selectedAnswer === correctAnswer) {
+    score++;
+  }
+  currentQuestionIndex++;
+  displayQuestion();
 }
 
-function showblock() {
+// Exemple : Ajoutez un bouton de redémarrage dans votre HTML
+const restartButton = document.getElementById("restartButton");
+restartButton.addEventListener("click", restartQuiz);*/
+
+  // Ajout des events sur les boutons
+
+  // Fonction SCORE
+  function AddScore() {
+    score += 1;
+    document.getElementById("scoreDiv").innerHTML = score;
+  }
+
+  // Fonction décompte des questions
+  function CountQuestion() {
+    count++;
+    document.getElementById("leftDiv").innerHTML = count;
+  }
+
+  // Fonction pour afficher le score final
+  function ShowResults() {
+    document.getElementById("score-final").innerHTML = score;
+  }
+
+  /*function showblock() {
   if (nextQuestion(question2).display != "none") {
     question2.style.display = "none";
   } else {
     question2.style.display = "block";
   }
-}
+}*/
 
-StartGame.addEventListener("click", (event) => {
-  console.log(event);
-  StartScreen.style.display = "none";
+  StartGame.addEventListener("click", (event) => {
+    console.log(event);
+    StartScreen.style.display = "none";
+    GameScreen.style.display = "block";
+    ShowQuestion1.style.display = "block";
+  });
 
-  GameScreen.style.display = "block";
-  ShowQuestion1.style.display = "block";
-});
+  ShowEndGame.addEventListener("click", (event) => {
+    console.log(event);
+    StartScreen.style.display = "block";
+    GameScreen.style.display = "none";
+    ShowEndGame.style.display = "none";
+  });
 
-TrueAnswer1.addEventListener("click", (event) => {
-  console.log(event);
-  ShowQuestion1.style.display = "none";
-  ShowQuestion2.style.display = "block";
-  CountQuestion();
-});
+  ReStartQuizz.addEventListener("click", (event) => {
+    console.log(event);
+    score = 0;
+    count = 0;
+    document.getElementById("scoreDiv").innerHTML = score;
+    document.getElementById("leftDiv").innerHTML = count;
+    location.reload();
+  });
 
-FalseAnswer1.addEventListener("click", (event) => {
-  console.log(event);
-  ShowQuestion1.style.display = "none";
-  ShowQuestion2.style.display = "block";
-  AddScore();
-  CountQuestion();
-});
+  TrueAnswer1.addEventListener("click", (event) => {
+    console.log(event);
+    ShowQuestion1.style.display = "none";
+    ShowQuestion2.style.display = "block";
+    CountQuestion();
+  });
 
-SubjectiveAnswer1.addEventListener("click", (event) => {
-  console.log(event);
-  ShowQuestion1.style.display = "none";
-  ShowQuestion2.style.display = "block";
-  CountQuestion();
-});
-
-TrueAnswer2.addEventListener("click", (event) => {
-  console.log(event);
-  ShowQuestion2.style.display = "none";
-  ShowQuestion3.style.display = "block";
-  CountQuestion();
-});
-
-FalseAnswer2.addEventListener("click", (event) => {
-  console.log(event);
-  ShowQuestion2.style.display = "none";
-  ShowQuestion3.style.display = "block";
-  CountQuestion();
-});
-
-SubjectiveAnswer2.addEventListener("click", (event) => {
-  console.log(event);
-  ShowQuestion2.style.display = "none";
-  ShowQuestion3.style.display = "block";
-  AddScore();
-  CountQuestion();
-});
-
-TrueAnswer3.addEventListener("click", (event) => {
-  console.log(event);
-  ShowQuestion3.style.display = "none";
-  ShowQuestion4.style.display = "block";
-  CountQuestion();
-});
-
-FalseAnswer3.addEventListener("click", (event) => {
-  console.log(event);
-  ShowQuestion3.style.display = "none";
-  ShowQuestion4.style.display = "block";
-  AddScore();
-  CountQuestion();
-});
-
-SubjectiveAnswer3.addEventListener("click", (event) => {
-  console.log(event);
-  ShowQuestion3.style.display = "none";
-  ShowQuestion4.style.display = "block";
-  CountQuestion();
-});
-
-TrueAnswer4.addEventListener("click", (event) => {
-  console.log(event);
-  ShowQuestion4.style.display = "none";
-  ShowQuestion5.style.display = "block";
-  CountQuestion();
-});
-
-FalseAnswer4.addEventListener("click", (event) => {
-  console.log(event);
-  ShowQuestion4.style.display = "none";
-  ShowQuestion5.style.display = "block";
-  AddScore();
-  CountQuestion();
-});
-
-SubjectiveAnswer4.addEventListener("click", (event) => {
-  console.log(event);
-  ShowQuestion4.style.display = "none";
-  ShowQuestion5.style.display = "block";
-  CountQuestion();
-});
-
-TrueAnswer5.addEventListener("click", (event) => {
-  console.log(event);
-  ShowQuestion5.style.display = "none";
-  ShowEndGame.style.display = "block";
-  CountQuestion();
-  ShowResults();
-});
-
-FalseAnswer5.addEventListener("click", (event) => {
-  console.log(event);
-  ShowQuestion5.style.display = "none";
-  ShowEndGame.style.display = "block";
-  AddScore();
-  CountQuestion();
-  ShowResults();
-});
-
-SubjectiveAnswer5.addEventListener("click", (event) => {
-  console.log(event);
-  ShowQuestion5.style.display = "none";
-  ShowEndGame.style.display = "block";
-  CountQuestion();
-  ShowResults();
-});
-
-let QuestionNumber = 1;
-let AnswerNumber = 1;
-for (
-  let index = Math.floor(Math.random(questions.length));
-  index < 5;
-  index++
-) {
-  const element = questions[index];
-  console.log(element);
-  console.log(document.querySelector(`#question${QuestionNumber} .quizz`));
-
-  const Question = document.querySelector(`#question${QuestionNumber} .quizz`); // récupérer la question pour les boutons, faire idem, et incrémenter d'un point.
-  Question.innerHTML = element.question;
-  // innerHTML : possibilité d'ajouter des blocs dans le Javascript
-
-  if (element.reponse === true) {
+  FalseAnswer1.addEventListener("click", (event) => {
+    console.log(event);
+    ShowQuestion1.style.display = "none";
+    ShowQuestion2.style.display = "block";
+    RepFalseAnswer1.style.display = "block";
     AddScore();
-  } else QuestionNumber++;
-}
+    CountQuestion();
+  });
 
-// Récupérer la question pour les boutons :
-{
-  const element = reponse[index];
-  console.log(element);
-  console.log(document.querySelector(`#reponse${AnswerNumber} .answer`));
-  const Answer = document.querySelector(`#reponse${AnswerNumber} .answer`);
-  Answer.innerHTMl = element.reponse;
-}
+  TrueAnswer2.addEventListener("click", (event) => {
+    console.log(event);
+    ShowQuestion2.style.display = "none";
+    ShowQuestion3.style.display = "block";
+    CountQuestion();
+    AddScore();
+  });
 
-//const restartButton = document.getElementById("restart-game"); // créer le bouton Restart CSS endgame
-//let game;
+  FalseAnswer2.addEventListener("click", (event) => {
+    console.log(event);
+    ShowQuestion2.style.display = "none";
+    ShowQuestion3.style.display = "block";
+    CountQuestion();
+  });
 
-//restartButton.addEventListener("click", function () {
-// Call the restartGame function when the button is clicked
-//restartGame();
-//});
-//};
-// Déclaration des fonctions pour les étapes du quizz
+  TrueAnswer3.addEventListener("click", (event) => {
+    console.log(event);
+    ShowQuestion3.style.display = "none";
+    ShowQuestion4.style.display = "block";
+    CountQuestion();
+  });
 
-//function NextQuestion() {}
+  FalseAnswer3.addEventListener("click", (event) => {
+    console.log(event);
+    ShowQuestion3.style.display = "none";
+    ShowQuestion4.style.display = "block";
+    AddScore();
+    CountQuestion();
+  });
 
-// itération 1 : affiche la question dans la barre de quizz
+  TrueAnswer4.addEventListener("click", (event) => {
+    console.log(event);
+    ShowQuestion4.style.display = "none";
+    ShowQuestion5.style.display = "block";
+    CountQuestion();
+  });
 
-// itération 2 : clic sur Vrai ou Faux => affiche la réponse
+  FalseAnswer4.addEventListener("click", (event) => {
+    console.log(event);
+    ShowQuestion4.style.display = "none";
+    ShowQuestion5.style.display = "block";
+    AddScore();
+    CountQuestion();
+  });
 
-// itération 3 : compte + 1 au décompte de questions
+  TrueAnswer5.addEventListener("click", (event) => {
+    console.log(event);
+    ShowQuestion5.style.display = "none";
+    ShowEndGame.style.display = "block";
+    CountQuestion();
+    ShowResults();
+  });
 
-// itération 4 : si la réponse est correcte
-//if (userAnswer === currentQuestion.correctAnswer) {
-// ajouter + 1 au score
-//scoreDiv++;
-//} else {
-void 0;
-//}
-// itération 5 : ajoute le score dans la section correspondante
+  FalseAnswer5.addEventListener("click", (event) => {
+    console.log(event);
+    ShowQuestion5.style.display = "none";
+    ShowEndGame.style.display = "block";
+    AddScore();
+    CountQuestion();
+    ShowResults();
+    ReStartQuizz();
+  });
 
-// itération 6 : affiche la question suivante en cliquant sur Next
+  // Loop sur l'array de questions pour faire sortir les 5 premières de manière aléatoire.
+  /*let QuestionNumber = 1;
+  let AnswerNumber = 1;
+  for (
+    let index = Math.floor(Math.random(questions.length));
+    index < 5;
+    index++
+  ) {
+    const element = questions[index];
+    console.log(element);
+    console.log(document.querySelector(`#question${QuestionNumber} .quizz`));
 
-// itération 7 : end Game après 12 questions (set time out ?)
+    const Question = document.querySelector(
+      `#question${QuestionNumber} .quizz`
+    ); // récupérer la question pour les boutons, faire idem, et incrémenter d'un point.
+    Question.innerHTML = element.question;
+    const AnswerTrue = document.querySelector(
+      `#question${QuestionNumber} .answer .true`
+    );
+    const AnswerFalse = document.querySelector(
+      `#question${QuestionNumber} .answer .false`
+    );
+    console.log(element.reponse);
 
-function showResults() {
+    if (element.reponse === true) {
+      AnswerTrue.setAttribute("addpoint", "true");
+      AnswerFalse.setAttribute("donothing", "false");
+    } else {
+      AnswerTrue.setAttribute("donothing", "false");
+      AnswerFalse.setAttribute("addpoint", "true");
+    }
+
+    AnswerTrue.setAttribute("onclick", function OnClickTrue() {
+      console.log("click true");
+
+      document.getElementById(`question${QuestionNumber}`).style.display =
+        "none";
+      document.getElementById(`question${QuestionNumber + 1}`).style.display =
+        "block";
+      // variabilise l'affichage des questions
+      CountQuestion();
+
+      if (element.reponse === true) {
+        AddScore();
+      }
+    });
+
+    AnswerFalse.setAttribute("onclick", function OnClickFalse() {
+      console.log("click false");
+      document.getElementById(`question${QuestionNumber}`).style.display =
+        "none";
+      document.getElementById(`question${QuestionNumber + 1}`).style.display =
+        "block";
+      CountQuestion();
+      if (element.reponse === false) {
+        AddScore();
+      }
+    });
+
+    // innerHTML : possibilité d'ajouter des blocs dans le Javascript
+
+    /* if (element.reponse === true) {
+      AddScore();
+    } else QuestionNumber++;*/
+
+  // Récupérer la question pour les boutons :
+  //QuestionNumber++;
+  //}
+
+  //let game;
+
+  //restartButton.addEventListener("click", function () {
+  // Call the restartGame function when the button is clicked
+  //restartGame();
+  //});
+  //};
+  // Déclaration des fonctions pour les étapes du quizz
+
+  //function NextQuestion() {}
+
+  // itération 1 : affiche la question dans la barre de quizz
+
+  // itération 2 : clic sur Vrai ou Faux => affiche la réponse
+
+  // itération 3 : compte + 1 au décompte de questions
+
+  // itération 4 : si la réponse est correcte
+  //if (userAnswer === currentQuestion.correctAnswer) {
+  // ajouter + 1 au score
+  //scoreDiv++;
+  //} else {
+  //void 0;
+  //}
+  // itération 5 : ajoute le score dans la section correspondante
+
+  // itération 6 : affiche la question suivante en cliquant sur Next
+
+  // itération 7 : end Game après 12 questions (set time out ?)
+
+  //function showResults() {
   // itération 8 : sélectionne la catégorie avec le résultat maximal
   // itération 9 : affiche la phrase de réponse en fonction du score obtenu
   // loop through the array :
   // retourne une phrase en fonction du nombre de réponses :
-}
+  //};
 
-//submitButton.addEventListener(cliquez, showResults)
+  //submitButton.addEventListener(cliquez, showResults)
+};
