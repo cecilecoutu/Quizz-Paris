@@ -576,6 +576,4 @@ restartButton.addEventListener("click", restartQuiz);*/
   // loop through the array :
   // retourne une phrase en fonction du nombre de réponses :
   //};
-
-  //submitButton.addEventListener(cliquez, showResults)
 };
